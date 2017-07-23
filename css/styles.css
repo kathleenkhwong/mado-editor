@@ -1,0 +1,187 @@
+/* global */
+
+html, body {
+  color: white;
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-size: 14px;
+  line-height: 2.0;
+  background-color: black;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.column-container {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+a {
+  color: goldenrod;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  color: white;
+  background-color: inherit;
+  border: 1px solid grey;
+  width: 90%;
+  padding: 4px;
+}
+
+::-webkit-input-placeholder {
+  color: darkgoldenrod;
+}
+
+select {
+  color: white;
+  background-color: inherit;
+  border: 1px solid grey;
+  width: 95%;
+  padding: 4px;
+}
+
+select:active, select:hover {
+  color: gold;
+  background: black;
+}
+
+select option {
+  background-color: black;
+  outline: 1px solid grey;
+}
+
+/* header */
+
+header {
+  background-color: black;
+  position: relative;
+  border-bottom: darkgoldenrod 1px solid;
+  width: 100%;
+}
+
+.logo {
+  font-size: 38px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.mado {
+  color: gold;
+  font-weight: bold;
+}
+
+nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+nav button, nav button.inactive-tab{
+  float: left;
+  border: none;
+  outline: none;
+  color: goldenrod;
+  background-color: inherit;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+nav button:hover, nav button.active-tab{
+  color: gold;
+  font-weight: bold;
+}
+
+/* content */
+
+#content {
+  border-bottom: darkgoldenrod 1px solid;
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+}
+
+.active-content {
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+}
+
+.inactive-content {
+  display: none;
+}
+
+#parameters {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+#parameters label, 
+#parameters input[type="text"],
+#parameters select{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#parameters button {
+  color: goldenrod;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: inherit;
+  border: 1px solid grey;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding: 10px;
+  width: 95%;
+}
+
+#parameters button:hover {
+  color: gold;
+  background: #222222;
+}
+
+#parameters button:active {
+  color: gold;
+  background: inherit;
+}
+
+div#source, div#target {
+  min-height: 240px;
+  margin: 1px;
+  flex: 1;
+}
+
+article {
+  padding: 20px;
+}
+
+/* footer */
+
+footer {
+  color: darkgoldenrod;
+  font-size: 14px;
+  text-align: right;
+  padding-right: 30px;
+}
+
+/* media queries */
+
+@media(max-width: 768px) {
+
+  .active-content {
+    flex-flow: column;
+  }
+
+}

@@ -1,0 +1,162 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width">
+
+  <title>mado editor</title>
+
+  <meta name="description" content="MATLAB Automatic Differentiation built on Octave parser">
+  
+  <meta name="author" content="wanqi">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body onload="initializeEditor()">
+
+  <script src="js/ace.js"></script>
+  <script src="js/shortcut.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/scripts.js"></script>
+
+  <div class="column-container">
+
+  <header>
+
+    <span class="logo"><code class="mado"> mado </code></span>
+    
+    <nav>
+      <button id="tab-mado-editor" 
+              title="mado editor"
+              class="active-tab" 
+              onclick="activateTab('tab-mado-editor')"> 
+        Editor 
+      </button>
+      <button id="tab-about" 
+              title="about mado editor"
+              class="inactive-tab" 
+              onclick="activateTab('tab-about')"> 
+        About 
+      </button>
+      <button id="tab-report-a-bug" 
+              title="report a bug or suggest a feature"
+              class="inactive-tab" 
+              onclick="activateTab('tab-report-a-bug')"> 
+        Feedback 
+      </button>
+    </nav>
+
+  </header>
+
+  <section id="content">
+
+    <div id="content-mado-editor" class="active-content">
+
+      <fieldset id="parameters">
+
+        <label> Active Input </label>
+
+        <input type="text" id="active-in" placeholder="active input..."/>
+
+        <label>Active Output</label>
+
+        <input type="text" id="active-out" placeholder="active output..." />
+
+        <label> Mode </label>
+
+        <select id="mode">
+
+          <option value="forward" selected> Forward Mode </option>
+          <option value="reverse"> Reverse Mode </option>
+
+        </select>
+
+        <label> Server </label>
+
+        <select id="server">
+
+          <option value="http://129.97.84.51:8081/mado/" selected> UW </option>
+          <option value="http://localhost:8081/mado/"> Azure </option>
+          <option value="http://localhost:8081/mado/"> localhost </option>
+
+        </select>
+
+        <button id="differentiate" onclick="differentiate()">Differentiate</button>
+
+      </fieldset>
+      
+      <div id="source">% enter differentiable MATLAB code here</div>
+
+      <div id="target">% press Ctrl + Enter to generate derivative code</div>
+
+    </div>
+
+    <div id="content-about" class="inactive-content">
+
+      <article>
+
+        <h2>About <code class="mado">mado</code></h2>
+
+        <p><code class="mado">mado</code> is MATLAB Automatic Differentiation built on Octave parser.</p>
+        
+        <p>
+          Find latest news and documentation at our 
+          <a href="https://github.com/vanchi7/mado-editor" target="_black">github page</a>.
+        </p>
+
+        <h3>Authors</h3>
+
+          <dl>
+            <dt> Wanqi Li 万奇 </dt>
+            <dd> PhD student at University of Waterloo </dd>
+            <dd> Email: <a href="mailto:wanqi.li@uwaterloo.ca">wanqi.li@uwaterloo.ca</a></dd>
+            <dd> Wanqi's <a href="https://github.com/vanchi7" target="_black">github page</a> </dd>
+            <br>
+            <dt> Thomas F. Coleman </dt>
+            <dd> Professor at University of Waterloo </dd>
+            <dd> 
+              Prof. Coleman's 
+              <a href="https://uwaterloo.ca/scholar/tfcolema" target="_black">personal page</a>
+            </dd>
+          </dl>
+
+      </article>
+
+    </div>
+
+    <div id="content-report-a-bug" class="inactive-content">
+      
+      <article>
+
+        <h2> Feedback </h2>
+
+        <p> 
+          To report a bug or suggest a feature, you are encouraged to create issue at our
+          <a href="https://github.com/vanchi7/mado-editor" target="_black">github page</a>.
+        </p>
+
+        <p>
+          Or you can email Wanqi Li (<a href="mailto:wanqi@outlook.com">wanqi@outlook.com</a>) directly.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+  <footer>
+    マド by 万奇， 2016 - 2017
+  </footer>
+
+  </div>
+
+</body>
+
+</html>
