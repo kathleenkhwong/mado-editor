@@ -8,15 +8,15 @@ wanqi@outlook.com
 last updated: July 23, 2017
 ```
 
-`mado` is MATLAB Automatic Differentiation built on Octave Parser.
-
-`mado editor` is the free web interface for `mado` AD compiler, built with [ace editor](https://ace.c9.io/).
+`mado editor` ([mado-editor.net](http://mado-editor.net)) is the web interface for `mado` AD compiler.
 
 This repository only contains the source code of `mado editor`. The source code of `mado` is to be released in the future as a separate repository after main features are stable enough. Since `mado` and `mado editor` are maintained by the same group, you can report bugs and suggest features for both `mado` and `mado editor` by opening issues in [mado-editor repository](https://github.com/vanchi7/mado-editor).
 
 Or you can email Wanqi Li (万奇) via wanqi@outlook.com for direct contact.
 
-This user manual assumes a basic understanding of automatic differentiation, at the level covered by the first three chapters of the following book.
+This user manual assumes a basic understanding of automatic differentiation. Introduction to automatic differentiation can be found in following books.
+
+> Coleman, T. F., & Xu, W. (2016). Automatic Differentiation in MATLAB using ADMAT with Applications. Society for industrial and applied mathematics.
 
 > Griewank, A., & Walther, A. (2008). Evaluating derivatives: principles and techniques of algorithmic differentiation. Society for Industrial and Applied Mathematics.
 
@@ -107,10 +107,6 @@ To test the generated code in a pure web environment on any device, user can run
 ## Differentiability
 
 `mado` can only differentiate a limited set of MATLAB expressions. It includes all MATLAB operators with limitations specified below.
-* __plus__ `z = +x` and __minus__ `z = -x`  
-  where `x`, `z` cannot be active matrix.
-* __hermitian__ `z = x'` and __transpose__ `z = x.'`  
-  where `x`, `z` cannot be active matrix. 
 * __addition__ `z = x + y` and __subtraction__ `z = x - y`  
   where `x`, `y`, `z` cannot be active matrix, i.e. `x`, `y`, `z` must be either inactive or active scalar/row vector/column vector.
 * __multiplication__ `z = x * y`  
@@ -127,14 +123,18 @@ To test the generated code in a pure web environment on any device, user can run
   where `z` cannot be active matrix.
 * __element-wise left division__ `z = x .\ y`  
   where `z` cannot be active matrix.
+* __plus__ `z = +x` and __minus__ `z = -x`  
+  where `x`, `z` cannot be active matrix.
+* __hermitian__ `z = x'` and __transpose__ `z = x.'`  
+  where `x`, `z` cannot be active matrix. 
 
 `mado` also supports some builtin MATLAB functions with limitations specified below.
 * `z = abs(x)`  
-  where `x` cannot be active matrix.
+  where `x` cannot be active matrix. Singular point where x equals zero is handled as if x is positive, but with warning message.
 * `z = sin(x)` and `z = cos(x)`  
   where `x` cannot be active matrix.
 * `z = max(x)` and `z = min(x)`  
-  where `x` cannot be active matrix.
+  where `x` cannot be active matrix. `max` and `min` functions are treated as control flow to make the result differentiable. Equality is handled in consistency with the corresponding [MATLAB builtin function](https://www.mathworks.com/help/matlab/ref/max.html), where the first occurrence is selected.
 * `z = max(x, y)` and `z = min(x, y)`  
   where `x`, `y`, `z` cannot be active matrix.
 * `z = norm(x)`  
