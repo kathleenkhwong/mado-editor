@@ -5,7 +5,7 @@ function initializeEditor() {
   source.session.setMode("ace/mode/matlab");
   source.session.setTabSize(2);
   source.session.setUseSoftTabs(true);
-  source.setFontSize(14);
+  source.setFontSize(12);
 
   var target = ace.edit("target");
   target.setTheme("ace/theme/twilight");
@@ -13,7 +13,7 @@ function initializeEditor() {
   target.session.setTabSize(2);
   target.session.setUseSoftTabs(true);
   target.setReadOnly(true);
-  target.setFontSize(14);
+  target.setFontSize(12);
 
   shortcut.add("Ctrl+Enter", differentiate);
 }
